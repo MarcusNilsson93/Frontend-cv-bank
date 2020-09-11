@@ -1,23 +1,32 @@
 <template>
   <div>
-    <h1 id="headline">Skapa ett konto med din iths mail, {{this.input}} för att ladda upp ditt cv</h1>
+    <h1 id="headline">Skapa ett konto med din iths mail, för att ladda upp ditt cv</h1>
     <div id="section" class="m-t-12">
       <div class="columns is-centered">
         <div class="column is-6">
           <div class="box">
             <div class="container">
-              <b-field label="Email" type="is-danger" message="This email is invalid" id="email">
-                <b-input type="email" v-model="input"></b-input>
-                <span class="button is-static">@iths.se</span>
-              </b-field>
 
-              <b-field label="Password">
-                <b-input type="password" value="iwantmytreasure" password-reveal></b-input>
-              </b-field>
+                <b-field label="Förnamn">
+                    <b-input required type="text"></b-input>  
+                </b-field>
 
-              <b-field>
-                <b-input type="button" value="Sign In" @click="checkForValidEmail"></b-input>
-              </b-field>
+                <b-field label="Efternamn">
+                    <b-input required type="text"></b-input>   
+                </b-field>
+
+                <b-field label="E-post">
+                    <b-input type="email" required v-model="input" id="emailfield"></b-input>
+                </b-field>
+
+                <b-field label="Lösenord">
+                    <b-input required type="password" value="" password-reveal></b-input>
+                </b-field>
+
+                <b-field>
+                    <b-input type="button" value="Registrera" @click.native="checkForValidEmail"></b-input>
+                </b-field>
+
             </div>
           </div>
         </div>
@@ -30,14 +39,14 @@ export default {
   name: "SignUp",
   data() {
     return {
-      input: ""
+      input: "",
+      fullEmail: ""
     };
   },
   methods: {
     checkForValidEmail() {
-      if (this.input === "hej") {
-        console.log("valid");
-      }
+        this.fullEmail = this.input + '@iths.se'
+      console.log(this.fullEmail)
     }
   }
 };
@@ -46,5 +55,6 @@ export default {
 /*Exempel css*/
 #headline {
   color: red;
+  font-size: 20px;
 }
 </style>

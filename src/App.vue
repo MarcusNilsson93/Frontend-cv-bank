@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Sign In</router-link> |
-      <router-link to="/sign-up">Sign Up</router-link>
+      <router-link to="/">Logga in</router-link> |
+      <router-link to="/sign-up">Registrera</router-link>
     </div>
     <router-view/>
   </div>

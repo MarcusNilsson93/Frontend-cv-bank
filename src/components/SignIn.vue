@@ -1,23 +1,24 @@
 <template>
   <div>
-    <h1 id="headline">Logga in på ditt konto, {{this.input}} för att ladda upp ditt cv</h1>
+    <h1 id="headline">Logga in på ditt konto för att ladda upp ditt cv</h1>
     <div id="section" class="m-t-12">
       <div class="columns is-centered">
         <div class="column is-6">
           <div class="box">
             <div class="container">
-              <b-field label="Email" type="is-danger" message="This email is invalid" id="email">
-                <b-input type="email" v-model="input"></b-input>
-                <span class="button is-static">@iths.se</span>
+
+              <b-field label="E-post">
+                <b-input type="email" required v-model="input"></b-input>
               </b-field>
 
-              <b-field label="Password">
-                <b-input type="password" value="iwantmytreasure" password-reveal></b-input>
+              <b-field label="Lösenord">
+                <b-input type="password" required value="" password-reveal></b-input>
               </b-field>
 
               <b-field>
-                <b-input type="button" value="Sign In" @click="checkForValidEmail"></b-input>
+                <b-input type="button" value="Logga in" @click.native="checkForValidEmail"></b-input>
               </b-field>
+
             </div>
           </div>
         </div>
@@ -30,25 +31,22 @@ export default {
   name: "SignIn",
   data() {
     return {
-      input: ''
+      input: "",
+      fullEmail: ""
     };
   },
   methods: {
-      checkForValidEmail(){
-          console.log("before if")
-          if(this.input === "hej"){
-                console.log("valid")
-          }
-      }
-  }
+        checkForValidEmail() {
+            this.fullEmail = this.input + '@iths.se'
+            console.log(this.fullEmail)
+        }
+    }
 };
 </script>
 <style scoped>
 /*Exempel css*/
 #headline {
   color: red;
-}
-#loginSection{
-    background-color: seagreen;
+  font-size: 20px;
 }
 </style>
